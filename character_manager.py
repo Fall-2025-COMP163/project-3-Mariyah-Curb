@@ -177,7 +177,12 @@ def load_character(character_name, save_directory="data/save_games"):
             if ": " not in line:
                 continue # Skip malformed lines or empty lines
             
-            key, value = line.strip().split(": ", 1)
+            parts = line.strip().split(":", 1)
+            if len(parts) != 2:
+                continue # Skip lines that don't have a colon
+            
+            key = parts[0].strip()
+            value = parts[1].strip()
             
             if key == "NAME": character["name"] = value
             elif key == "CLASS": character["class"] = value
@@ -408,26 +413,25 @@ if __name__ == "__main__":
     print("=== CHARACTER MANAGER TEST ===")
     
     # Test character creation
-     try:
-         char = create_character("TestHero", "Warrior")
-         print(f"Created: {char['name']} the {char['class']}")
-         print(f"Stats: HP={char['health']}, STR={char['strength']}, MAG={char['magic']}")
-     except InvalidCharacterClassError as e:
-         print(f"Invalid class: {e}")
+    try:
+        char = create_character("TestHero", "Warrior")
+        print(f"Created: {char['name']} the {char['class']}")
+        print(f"Stats: HP={char['health']}, STR={char['strength']}, MAG={char['magic']}")
+    except InvalidCharacterClassError as e:
+        print(f"Invalid class: {e}")
     
     # Test saving
-     try:
-         save_character(char)
-         print("Character saved successfully")
-     except Exception as e:
-         print(f"Save error: {e}")
+    try:
+        save_character(char)
+        print("Character saved successfully")
+    except Exception as e:
+        print(f"Save error: {e}")
     
     # Test loading
-     try:
-         loaded = load_character("TestHero")
-         print(f"Loaded: {loaded['name']}")
-     except CharacterNotFoundError:
-         print("Character not found")
-     except SaveFileCorruptedError:
-         print("Save file corrupted")
-
+    try:
+        loaded = load_character("TestHero")
+        print(f"Loaded: {loaded['name']}")
+    except CharacterNotFoundError:
+        print("Character not found")
+    except SaveFileCorruptedError:
+        print("Save file corrupted")
