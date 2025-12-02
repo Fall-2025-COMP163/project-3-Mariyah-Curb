@@ -25,7 +25,7 @@ I used custom exceptions to handle game logic errors without crashing the progra
 * **Class Inheritance**: Custom exceptions inherit from a base `GameError` class for organized error hierarchy.
 
 ## AI Usage
-I used AI assistance to help debug syntax errors (like indentation issues), generate the boilerplate code for the module structure, and verify that my logic for the quest prerequisite chain was correct.
+I used AI assistance to help debug syntax errors (like indentation issues), Generate a descriptive read file , and verify that my logic for the all the modules were correct.
 
 ## How to Play
 1. Run `python main.py`.
