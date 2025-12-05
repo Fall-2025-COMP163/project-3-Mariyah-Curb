@@ -9,6 +9,7 @@ AI Usage: Correcting code and properly linking modules together
 This is the main game file that ties all modules together.
 Demonstrates module integration and complete game flow.
 """
+#checking if test cases fail again
 
 # Import all our custom modules
 import character_manager
